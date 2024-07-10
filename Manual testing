@@ -1,0 +1,79 @@
+1. Sign Up Module
+Test Cases:
+
+TC-SU-01: Verify that all mandatory fields (such as Name, Email, Password) are present on the Sign Up page.
+TC-SU-02: Verify that a user can successfully sign up with valid data.
+TC-SU-03: Verify that an error message is displayed when trying to sign up without entering mandatory fields.
+TC-SU-04: Verify that the email field accepts valid email formats.
+TC-SU-05: Verify that the password field enforces the specified password policy (e.g., minimum characters, special characters).
+TC-SU-06: Verify that clicking on the Sign Up button submits the form successfully.
+TC-SU-07: Verify that a confirmation email/SMS is sent upon successful sign up.
+Field Validations:
+
+Name: Should not accept special characters or numbers.
+Email: Should accept valid email formats (e.g., xyz@example.com).
+Password: Should meet specified criteria (e.g., minimum length, special characters).
+Confirm Password: Should match the entered password.
+Phone Number (optional): Should accept valid phone numbers if included.
+
+Bugs:-
+If the Sign Up button does not respond or gives an error upon clicking.
+Incorrect validation messages displayed when entering invalid data.
+
+
+2. Forgot Password Module
+Test Cases:-
+
+TC-FP-01: Verify that the "Forgot Password" link redirects to the correct page/form.
+TC-FP-02: Verify that entering a registered email ID and submitting sends a password reset link.
+TC-FP-03: Verify that entering a non-registered email ID shows an appropriate error message.
+TC-FP-04: Verify that the password reset link expires after a specified period.
+TC-FP-05: Verify that the password reset functionality successfully updates the password.
+
+Field Validations:-
+Email: Should accept valid email formats.
+Captcha (if present): Should be required and validated correctly to prevent bots.
+
+
+Bugs:-
+If the password reset link is not sent or expires prematurely.
+Incorrect validation or error messages.
+
+
+3. Sign with OTP Module
+Test Cases:-
+
+TC-SO-01: Verify that the user receives an OTP via SMS/email upon entering a registered phone number/email.
+TC-SO-02: Verify that entering an incorrect OTP shows an appropriate error message.
+TC-SO-03: Verify that OTP expires after a specified period.
+TC-SO-04: Verify that the user can successfully sign in after entering the correct OTP.
+
+
+Field Validations:-
+Phone Number/Email: Should accept valid formats and be registered in the system.
+OTP: Should accept only numeric values and match the sent OTP.
+
+
+Bugs:-
+OTP not received or delayed.
+Incorrect OTP validation.
+
+
+4. Login Module
+Test Cases:-
+
+TC-LG-01: Verify that all mandatory fields (Email/Username and Password) are present on the Login page.
+TC-LG-02: Verify that a registered user can successfully log in with valid credentials.
+TC-LG-03: Verify that an error message is displayed when trying to log in with invalid credentials.
+TC-LG-04: Verify that the "Remember Me" option works as expected.
+TC-LG-05: Verify that the "Forgot Password" link redirects to the correct Forgot Password module.
+
+
+Field Validations:-
+Email/Username: Should accept valid email formats or username as per system requirements.
+Password: Should match the registered password criteria.
+
+
+Bugs:-
+Login button not responsive or error after clicking.
+Incorrect error messages displayed.
