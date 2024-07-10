@@ -1,0 +1,31 @@
+Step 1: Setting Up the Maven Project
+Create a Maven Project:
+Use your preferred IDE (like IntelliJ IDEA or Eclipse) to create a new Maven project. Alternatively, you can create it from the command line:
+
+bash
+Copy code
+mvn archetype:generate -DgroupId=com.yourcompany.tests -DartifactId=automation-tests -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Add Selenium WebDriver Dependencies:
+Update the pom.xml file to include Selenium WebDriver dependencies:
+
+xml
+Copy code
+<dependencies>
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>3.141.59</version>
+    </dependency>
+    <!-- Add other dependencies as needed -->
+</dependencies>
+Configure TestNG (Optional):
+If you prefer using TestNG for test execution and parameterization, add TestNG dependency to pom.xml:
+
+xml
+Copy code
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.4.0</version>
+    <scope>test</scope>
+</dependency>
