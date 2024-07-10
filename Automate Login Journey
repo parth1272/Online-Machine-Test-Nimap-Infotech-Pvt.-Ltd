@@ -1,0 +1,124 @@
+Step 2: Automate Login Journey
+Create a test class LoginTest.java under src/test/java:
+
+java code - 
+package com.yourcompany.tests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+
+public class LoginTest {
+    WebDriver driver;
+
+    @BeforeClass
+    public void setUp() {
+        // Set up WebDriver (Assuming ChromeDriver for example)
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://testffc.nimapinfotech.com/");
+    }
+
+    @Test(dataProvider = "loginData")
+    public void loginTest(String username, String password) {
+        // Perform login
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("loginButton")).click();
+
+        // Validate login - example assertion
+        Assert.assertEquals(driver.getTitle(), "Expected Title");
+    }
+
+    @DataProvider(name = "loginData")
+    public Object[][] getLoginData() {
+        // Provide test data for login
+        return new Object[][] {
+                {"username1", "password1"},
+                {"username2", "password2"},
+                // Add more test data as needed
+        };
+    }
+
+    @AfterClass
+    public void tearDown() {
+        // Close the browser after all tests
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+Step 3: Verify Toast/Popup Message
+Add another test method in LoginTest.java to verify the toast or popup message after PunchIn action.
+
+java code-
+@Test
+public void verifyToastMessage() {
+    // Assume punch in action and then verify toast message
+    // Example: click on PunchIn button and then verify toast message
+    String toastMessage = driver.findElement(By.id("toastMessage")).getText();
+    Assert.assertEquals(toastMessage, "Expected Toast Message");
+}
+Step 4: Add Customer
+Create another test class AddCustomerTest.java for adding a customer:
+
+java dode - 
+package com.yourcompany.tests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+
+public class AddCustomerTest {
+    WebDriver driver;
+
+    @BeforeClass
+    public void setUp() {
+        // Set up WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://testffc.nimapinfotech.com/");
+    }
+
+    @Test(dataProvider = "customerData")
+    public void addCustomerTest(String customerName, String customerEmail) {
+        // Perform adding customer
+        driver.findElement(By.id("addCustomerButton")).click();
+        driver.findElement(By.id("customerName")).sendKeys(customerName);
+        driver.findElement(By.id("customerEmail")).sendKeys(customerEmail);
+        driver.findElement(By.id("saveCustomerButton")).click();
+
+        // Validate customer addition - example assertion
+        Assert.assertTrue(driver.findElement(By.id("successMessage")).isDisplayed());
+    }
+
+    @DataProvider(name = "customerData")
+    public Object[][] getCustomerData() {
+        // Provide test data for adding customer
+        return new Object[][] {
+                {"Customer A", "customerA@example.com"},
+                {"Customer B", "customerB@example.com"},
+                // Add more test data as needed
+        };
+    }
+
+    @AfterClass
+    public void tearDown() {
+        // Close the browser after all tests
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+Step 5: Running Tests
+Compile and Run Tests:
+Use Maven commands to compile and run tests:
+
+bash -
+mvn clean test
+View Reports:
+Depending on your testing framework (TestNG or JUnit), test reports will be generated in the target directory.
